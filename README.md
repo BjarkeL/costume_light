@@ -1,4 +1,4 @@
-# Realtime system for running LED strips with arduino.
+# Realtime system for running LED strips with Arduino.
 Uses a "run to complete" scheduler for multitasking.
 
 ## To-do:
