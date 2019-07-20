@@ -1,6 +1,7 @@
 #include "task.h"
 
-#include "definitions.h"
+timer Task::timers[MAX_TIMERS] = {0};
+int Task::semaphores[MAX_SEMAPHORES] = {0};
 
 Task::Task() {
 
@@ -15,7 +16,7 @@ int Task::run_task(char _state) {
 }
 
 void Task::update_task() {
-    // Count down the timer:
+    
     if (condition == TASK_WAITING_FOR_TIMEOUT) {
         if (!(--timer)) {
             condition = TASK_READY;
@@ -65,4 +66,45 @@ char Task::sem_wait(char _sem) {
         }
     }
     return result;
+}
+
+char Task::sem_check(char _sem) {
+    char result = 0;
+    if (_sem < MAX_SEMAPHORES) {
+        if (semaphores[_sem]) {
+            semaphores[_sem]--;
+            result = 1;
+        }
+    }
+    return result;
+}
+
+void Task::set_timer(char _id, int _time) {
+    if (_id < MAX_TIMERS) {
+        timers[_id].time = _time;
+        timers[_id].status = TIMER_RUNNING;
+    }
+}
+
+char Task::check_timer(char _id) {
+    char result = 0;
+    if (_id < MAX_TIMERS) {
+        result = timers[_id].status;
+    }
+    return result;
+}
+
+void Task::reset_timer(char _id) {
+    if (_id < MAX_TIMERS) {
+        timers[_id].time = 0;
+        timers[_id].status = TIMER_DONE;
+    }
+}
+
+void Task::update_timers() {
+    for (char i = 0; i < MAX_TIMERS; i++) {
+        if (timers[i].time)
+            if (!(--timers[i].time))
+                timers[i].status = TIMER_DONE;
+    }
 }

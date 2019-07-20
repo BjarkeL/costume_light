@@ -1,5 +1,8 @@
 #include "receiver.h"
 
+char Receiver::received_val;
+char Receiver::new_msg = 0;
+
 Receiver::Receiver() {
 
 }
@@ -16,7 +19,13 @@ int Receiver::run_task(char _state) {
             state = RECEIVER_READY;
             break;
         case RECEIVER_READY:
-
+            if (new_msg && received_val == SYNC) {
+                sem_signal(SYNC_SEM);
+                new_msg = 0;
+            } else if (new_msg && received_val == RESET) {
+                sem_signal(RESET_SEM);
+                new_msg = 0;
+            }
             break;
         default:
             break;
@@ -26,6 +35,6 @@ int Receiver::run_task(char _state) {
 }
 
 void Receiver::receive_event() {
-    Wire.read();
-    PORTB ^= 1<<4;
+    received_val = Wire.read();
+    new_msg = 1;
 }

@@ -3,4 +3,7 @@ Uses a "run to complete" scheduler for multitasking.
 
 ## To-do:
 - [ ] Add synchronization between multiple Arduinos.
-- [ ] Add software timers.
+- [x] Add software timers.
+- [ ] Add start / pause switch.
+- [ ] Add lights on / off switch.
+- [ ] Add binary codes for different animations.
