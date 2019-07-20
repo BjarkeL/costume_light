@@ -8,7 +8,8 @@
 #define HW_INIT 0
 #define HW_READY 1
 
-#define BUTTON_PIN 3
+#define PLAY_BUTTON_PIN 3
+#define ON_BUTTON_PIN 4
 
 class HwInput: public Task {
 public:

@@ -36,6 +36,27 @@ int AnimationPlayer::run_task(char _state) {
                 play_frame();
                 set_timer(0, 50);
             }
+            if (sem_check(ANIMATION_PAUSE_SEM)) {
+                state = PLAYER_PAUSE;
+            }
+            if (sem_check(ANIMATION_ON_OFF_SEM)) {
+                animation_off();
+                state = PLAYER_OFF;
+            }
+            break;
+        case PLAYER_OFF:
+            if (sem_check(ANIMATION_ON_OFF_SEM)) {
+                state = PLAYER_READY;
+            }
+            break;
+        case PLAYER_PAUSE:
+            if (sem_check(ANIMATION_PAUSE_SEM)) {
+                state = PLAYER_READY;
+            }
+            if (sem_check(ANIMATION_ON_OFF_SEM)) {
+                animation_off();
+                state = PLAYER_OFF;
+            }
             break;
         default:
             break;
@@ -79,4 +100,13 @@ void AnimationPlayer::pick_animation(char _animation) {
     }
     reset_animation(0);
     reset_timer(FRAME_TIMER);
+}
+
+void AnimationPlayer::animation_off() {
+    for (int i = 0; i < NUM_LEDS; i++) {
+        leds[i].r = 0;
+        leds[i].g = 0;
+        leds[i].b = 0;
+    }
+    FastLED.show();
 }

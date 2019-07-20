@@ -8,8 +8,8 @@
 #define LED_INIT 0
 #define LED_READY 1
 
-#define STATUS_LED 5
-#define LED 4
+#define STATUS_LED 7
+#define LED 1
 
 class StatusLed: public Task {
 public:

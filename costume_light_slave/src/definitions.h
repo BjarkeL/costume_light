@@ -25,6 +25,8 @@ static unsigned long timing = 0;
 /* Commands */
 #define SYNC 0
 #define RESET 1
+#define ANIMATION_PAUSE 2
+#define ANIMATION_ON_OFF 3
 
 /* Tasks */
 #define ANIMATION_TASK 0
@@ -37,7 +39,9 @@ static unsigned long timing = 0;
 /* Semaphores */
 #define SYNC_SEM 0
 #define RESET_SEM 1
-#define BUTTON_SEM 2
+#define ANIMATION_ON_OFF_SEM 2
+#define ANIMATION_PAUSE_SEM 3
+#define BUTTON_SEM 4
 
 /* Timers */
 #define FRAME_TIMER 0

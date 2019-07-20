@@ -8,6 +8,8 @@
 
 #define PLAYER_INIT 0
 #define PLAYER_READY 1
+#define PLAYER_PAUSE 2
+#define PLAYER_OFF 3
 
 class AnimationPlayer: public Task {
 public:
@@ -19,6 +21,7 @@ public:
     void play_frame();
     void reset_animation(char _frame);
     void pick_animation(char _animation);
+    void animation_off();
 private:
     CRGB leds[NUM_LEDS];
     int frame_index = 0;

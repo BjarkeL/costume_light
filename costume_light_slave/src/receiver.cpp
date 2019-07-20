@@ -19,6 +19,26 @@ int Receiver::run_task(char _state) {
             state = RECEIVER_READY;
             break;
         case RECEIVER_READY:
+            if (new_msg) {
+                switch (received_val) {
+                    case SYNC:
+                        sem_signal(SYNC_SEM);
+                        break;
+                    case RESET:
+                        sem_signal(RESET_SEM);
+                        break;
+                    case ANIMATION_PAUSE:
+                        sem_signal(ANIMATION_PAUSE_SEM);
+                        break;
+                    case ANIMATION_ON_OFF:
+                        sem_signal(ANIMATION_ON_OFF_SEM);
+                        break;
+                    default:
+                        break;
+                }
+                new_msg = 0;
+            }
+            /*
             if (new_msg && received_val == SYNC) {
                 sem_signal(SYNC_SEM);
                 new_msg = 0;
@@ -26,6 +46,7 @@ int Receiver::run_task(char _state) {
                 sem_signal(RESET_SEM);
                 new_msg = 0;
             }
+            */
             break;
         default:
             break;

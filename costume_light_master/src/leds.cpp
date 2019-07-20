@@ -30,7 +30,8 @@ TestLed::TestLed() {
 }
 
 void TestLed::led_init() {
-    DDRB |= 1<<LED;
+    DDRL |= 1<<LED;
+    PORTL |= 1<<LED;
 }
 
 int TestLed::run_task(char _state) {
@@ -42,7 +43,7 @@ int TestLed::run_task(char _state) {
         case LED_READY:
             sem_wait(BUTTON_SEM);
             if (event = SIGNAL_EVENT) {
-                PORTB ^= 1<<LED;
+                PORTL ^= 1<<LED;
             }
             break;
         default:
