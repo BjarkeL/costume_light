@@ -10,6 +10,7 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 * Frame numbers
 * Number of LED's
 * Frame delay
+
 *animation_player.cpp*
 * Initial animation *init_player()*
 
