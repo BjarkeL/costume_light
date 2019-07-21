@@ -1,6 +1,6 @@
 # Realtime system for running LED strips with Arduino.
 Uses a "run to complete" scheduler for multitasking.
-The main loop runs through every 10 ms.
+The main loop runs every 10 ms.
 The master arduino communicates to all slaves via I2C using the [Wire](https://www.arduino.cc/en/reference/wire) library (broadcast on address 0 enabled).
 The LED strips are controlled using the [FastLED](https://github.com/FastLED/FastLED) library.
 
