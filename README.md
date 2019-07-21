@@ -32,7 +32,7 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 * Add the animation to the choice of animations (to be implemented).
 
 ## Pins (Arduino Nano):
-* Status LED: D13 *PB5 - Built-in LED*
+* Status LED: D13 *PB5 &mdash; Built-in LED*
 * Green LED: D2 *PD2*
 * Yellow LED: D3 *PD3*
 * Red LED: D4 *PD4*
