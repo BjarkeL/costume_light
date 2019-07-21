@@ -31,7 +31,7 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 * Add the animation to the choice of animations (to be implemented).
 
 ## Pins (Arduino Nano):
-* Status LED: D13 *PB5 - Build in LED*
+* Status LED: D13 *PB5 - Built-in LED*
 * Green LED: D2 *PD2*
 * Yellow LED: D3 *PD3*
 * Red LED: D4 *PD4*
@@ -50,6 +50,8 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 ### LED signals:
 * Status LED: Blinks once every second when the program is running.
 * Green LED: Flashes for 100 ms every time a sync signal is sent.
+* Yellow LED: Lights up while the animation is paused.
+* Red LED: Lights up while the LED strips are turned on.
 
 ## To-do:
 - [ ] Add binary codes for different animations.
