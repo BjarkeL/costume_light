@@ -12,7 +12,7 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 * Frame delay
 
 *animation_player.cpp*
-* Initial animation *&mdash init_player()*
+* Initial animation *--- init_player()*
 
 ## Values to adjust for the master:
 *definitions.h*
@@ -20,7 +20,7 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 
 ## Values to adjust across all slaves:
 *receiver.cpp*
-* Slave address *&mdash receiver_init()*
+* Slave address *--- receiver_init()*
 
 ## Adding an animation:
 *definitions.h*
