@@ -59,5 +59,7 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 
 ### Notes:
 All tasks have to be in increasing order without gaps. To avoid this; change the *while (tasks[current_task]->condition != TASK_IDLE)*, to a for loop that skips any gaps.
+
 The receiver only reads one byte so don't send more than one byte.
+
 Seems like it doesn't like if two messages are sent out in one cycle.
