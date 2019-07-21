@@ -32,16 +32,16 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 * Add the animation to the choice of animations (to be implemented).
 
 ## Pins (Arduino Nano):
-* Status LED: D13 *PB5 &mdash; Built-in LED*
-* Green LED: D2 *PD2*
-* Yellow LED: D3 *PD3*
-* Red LED: D4 *PD4*
-* Button 1: D5 *PD5*
-* Button 2: D6 *PD6*
-* Button 3: D7 *PD7*
-* LED strip: D8
-* SDA: A4
-* SCL: A5
+* Status LED: **D13** *PB5 &mdash; Built-in LED*
+* Green LED: **D2** *PD2*
+* Yellow LED: **D3** *PD3*
+* Red LED: **D4** *PD4*
+* Button 1: **D5** *PD5*
+* Button 2: **D6** *PD6*
+* Button 3: **D7** *PD7*
+* LED strip: **D8**
+* SDA: **A4**
+* SCL: **A5**
 
 ### Button functions:
 * Button 1: Pause/play the animation. Also works while the animation is off.
