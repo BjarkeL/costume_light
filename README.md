@@ -27,6 +27,7 @@ The LED strips are controlled using the [FastLED](https://github.com/FastLED/Fas
 * Add a define for the animation.
 * Add a define for the number of frames.
 * Add the animation as a list of rgb values.
+
 *animation_player.cpp*
 * Add the animation to the *pick_animation()* function.
 * Add the animation to the choice of animations (to be implemented).
