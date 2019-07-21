@@ -18,11 +18,11 @@ void setup() {
     tasks[i]->condition = TASK_IDLE;
   }
   add_task(new AnimationPlayer, ANIMATION_TASK);
-  add_task(new HwInput, BUTTON_TASK);
   add_task(new StatusLed, STATUS_LED_TASK);
   add_task(new TestLed, TEST_LED_TASK);
   //add_task(new Receiver, RECEIVER_TASK);
   add_task(new Sender, SENDER_TASK);
+  add_task(new HwInput, BUTTON_TASK);
 }
 
 void loop() {

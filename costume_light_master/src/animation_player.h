@@ -29,6 +29,7 @@ private:
     char* animation;
     char current_animation;
     char frames;
+    char sync_counter;
 };
 
 #endif

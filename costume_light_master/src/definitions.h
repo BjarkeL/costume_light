@@ -8,7 +8,7 @@ static unsigned long timing = 0;
 #define FREQUENZY 10
 
 #define MAX_TASKS 8
-#define MAX_SEMAPHORES 8
+#define MAX_SEMAPHORES 16
 #define MAX_TIMERS 8
 
 #define TASK_IDLE 0
@@ -27,38 +27,58 @@ static unsigned long timing = 0;
 #define RESET 1
 #define ANIMATION_PAUSE 2
 #define ANIMATION_ON_OFF 3
+#define ANIMATION_CYCLE 4
 
 /* Tasks */
-#define ANIMATION_TASK 0
-#define BUTTON_TASK 1
-#define STATUS_LED_TASK 2
-#define TEST_LED_TASK 3
-#define RECEIVER_TASK 4
-#define SENDER_TASK 4
+#define STATUS_LED_TASK 0
+#define ANIMATION_TASK 1
+#define TEST_LED_TASK 2
+#define RECEIVER_TASK 3
+#define SENDER_TASK 3
+#define BUTTON_TASK 4
 
 /* Semaphores */
-#define SYNC_SEM 0
+#define SEND_ANIMATION_SYNC_SEM 0
 #define RESET_SEM 1
 #define ANIMATION_ON_OFF_SEM 2
 #define SEND_ANIMATION_ON_OFF_SEM 3
 #define ANIMATION_PAUSE_SEM 4
 #define SEND_ANIMATION_PAUSE_SEM 5
-#define BUTTON_SEM 6
+#define RED_LED_SEM 6
+#define GREEN_LED_SEM 7
+#define YELLOW_LED_SEM 8
+#define SEND_ANIMATION_CYCLE_SEM 9
+#define ANIMATION_CYCLE_SEM 10
+//#define BUTTON_SEM 9
 
 /* Timers */
 #define FRAME_TIMER 0
+#define LED_FLASH_TIMER 1
+
+/* I2C addresses */
+#define MASTER_ADDRESS 1
+#define SLAVE_1_ADDRESS 2
+#define SLAVE_2_ADDRESS 3
+#define SLAVE_3_ADDRESS 4
+#define SLAVE_4_ADDRESS 5
+#define SLAVE_5_ADDRESS 6
+#define SLAVE_6_ADDRESS 7
+#define SLAVE_7_ADDRESS 8
+#define SLAVE_8_ADDRESS 9
+#define SLAVE_9_ADDRESS 10
 
 /* Defines for the LED strip / animation */
 #define NUM_LEDS 75
-#define LED_STRIP_PIN 46
+#define LED_STRIP_PIN 8
 #define FRAME_DELAY 50
+#define SYNC_INTERVAL 2
 
-#define FRAMES_ANIMATION1 8
-#define FRAMES_ANIMATION2 7
 
 /* Different animations */
 #define ANIMATION1 0
+#define FRAMES_ANIMATION1 8
 #define ANIMATION2 1
+#define FRAMES_ANIMATION2 7
 
 /* The animations */
 const char animation1[] PROGMEM = {

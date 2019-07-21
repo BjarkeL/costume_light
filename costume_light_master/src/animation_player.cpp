@@ -8,21 +8,18 @@ void AnimationPlayer::init_player() {
     FastLED.addLeds<WS2812B, LED_STRIP_PIN, GRB>(leds, NUM_LEDS);
     pick_animation(ANIMATION1);
     current_animation = ANIMATION1;
+    sync_counter = (frames*SYNC_INTERVAL)-2;
 }
 
 int AnimationPlayer::run_task(char _state) {
     switch (_state) {
         case PLAYER_INIT:
             init_player();
-            state = PLAYER_READY;
+            animation_off();
+            state = PLAYER_OFF;
             break;
         case PLAYER_READY:
-            if (sem_check(RESET_SEM)) {
-                reset_animation(2);
-                reset_timer(FRAME_TIMER);
-                DDRB ^= 1<<4;
-            }
-            if (sem_check(SYNC_SEM)) {
+            if (sem_check(ANIMATION_CYCLE_SEM)) {
                 if (current_animation == ANIMATION1) {
                     pick_animation(ANIMATION2);
                     current_animation = ANIMATION2;
@@ -30,11 +27,20 @@ int AnimationPlayer::run_task(char _state) {
                     pick_animation(ANIMATION1);
                     current_animation = ANIMATION1;
                 }
-                DDRB ^= 1<<4;
+                sync_counter = (frames*SYNC_INTERVAL)-2;
             }
+            //if (sem_check(RESET_SEM)) {
+            //}
             if (check_timer(FRAME_TIMER) == TIMER_DONE) {
+                if (++sync_counter == frames*SYNC_INTERVAL) {
+                    reset_animation(5);
+                    reset_timer(FRAME_TIMER);
+                    sem_signal(SEND_ANIMATION_SYNC_SEM);
+                    sem_signal(GREEN_LED_SEM);
+                    sync_counter = 0;
+                }
                 play_frame();
-                set_timer(0, 50);
+                set_timer(FRAME_TIMER, FRAME_DELAY);
             }
             if (sem_check(ANIMATION_PAUSE_SEM)) {
                 state = PLAYER_PAUSE;

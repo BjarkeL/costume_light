@@ -15,10 +15,10 @@ int HwInput::run_task(char _state) {
             state = HW_READY;
             break;
         case HW_READY:
-            if (PIND & 1<<BUTTON_PIN) {
+            /*if (PIND & 1<<BUTTON_PIN) {
                 sem_signal(BUTTON_SEM);
                 wait(25);
-            }
+            }*/
             break;
         default:
             break;

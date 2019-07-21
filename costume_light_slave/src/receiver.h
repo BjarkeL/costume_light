@@ -9,8 +9,6 @@
 #define RECEIVER_INIT 0
 #define RECEIVER_READY 1
 
-#define RECEIVER_ID 8
-
 class Receiver: public Task {
 public:
     Receiver();

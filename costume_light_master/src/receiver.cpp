@@ -20,10 +20,10 @@ int Receiver::run_task(char _state) {
             break;
         case RECEIVER_READY:
             if (new_msg && received_val == SYNC) {
-                sem_signal(SYNC_SEM);
+                //sem_signal(SYNC_SEM);
                 new_msg = 0;
             } else if (new_msg && received_val == RESET) {
-                sem_signal(RESET_SEM);
+                //sem_signal(RESET_SEM);
                 new_msg = 0;
             }
             break;

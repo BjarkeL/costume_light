@@ -30,7 +30,9 @@ TestLed::TestLed() {
 }
 
 void TestLed::led_init() {
-    DDRB |= 1<<LED;
+    DDRD |= 1<<RED_LED;
+    DDRD |= 1<<GREEN_LED;
+    DDRD |= 1<<YELLOW_LED;
 }
 
 int TestLed::run_task(char _state) {
@@ -40,10 +42,16 @@ int TestLed::run_task(char _state) {
             state = LED_READY;
             break;
         case LED_READY:
-            sem_wait(BUTTON_SEM);
-            if (event = SIGNAL_EVENT) {
-                PORTB ^= 1<<LED;
+            if (sem_check(RED_LED_SEM))
+                PORTD ^= 1<<RED_LED;
+            if (sem_check(YELLOW_LED_SEM))
+                PORTD ^= 1<<YELLOW_LED;
+            if (sem_check(GREEN_LED_SEM)) {
+                PORTD |= 1<<GREEN_LED;
+                set_timer(LED_FLASH_TIMER, 10);
             }
+            if (check_timer(LED_FLASH_TIMER) == TIMER_DONE)
+                PORTD &= ~(1<<GREEN_LED);
             break;
         default:
             break;

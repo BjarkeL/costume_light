@@ -5,7 +5,7 @@ Sender::Sender() {
 }
 
 void Sender::sender_init() {
-    Wire.begin();
+    Wire.begin(MASTER_ADDRESS);
 }
 
 int Sender::run_task(char _state) {
@@ -16,13 +16,23 @@ int Sender::run_task(char _state) {
             break;
         case SENDER_READY:
             if (sem_check(SEND_ANIMATION_ON_OFF_SEM)) {
-                Wire.beginTransmission(8);
+                Wire.beginTransmission(0);
                 Wire.write(ANIMATION_ON_OFF);
                 Wire.endTransmission();
             }
             if (sem_check(SEND_ANIMATION_PAUSE_SEM)) {
-                Wire.beginTransmission(8);
+                Wire.beginTransmission(0);
                 Wire.write(ANIMATION_PAUSE);
+                Wire.endTransmission();
+            }
+            if (sem_check(SEND_ANIMATION_SYNC_SEM)) {
+                Wire.beginTransmission(0);
+                Wire.write(SYNC);
+                Wire.endTransmission();
+            }
+            if (sem_check(SEND_ANIMATION_CYCLE_SEM)) {
+                Wire.beginTransmission(0);
+                Wire.write(ANIMATION_CYCLE);
                 Wire.endTransmission();
             }
             /*

@@ -8,7 +8,8 @@ Receiver::Receiver() {
 }
 
 void Receiver::receiver_init() {
-    Wire.begin(RECEIVER_ID);
+    Wire.begin(SLAVE_1_ADDRESS);
+    TWAR |= SLAVE_1_ADDRESS<<1 | 1;
     Wire.onReceive(receive_event);
 }
 
@@ -23,30 +24,26 @@ int Receiver::run_task(char _state) {
                 switch (received_val) {
                     case SYNC:
                         sem_signal(SYNC_SEM);
+                        sem_signal(GREEN_LED_SEM);
                         break;
                     case RESET:
                         sem_signal(RESET_SEM);
                         break;
                     case ANIMATION_PAUSE:
                         sem_signal(ANIMATION_PAUSE_SEM);
+                        sem_signal(YELLOW_LED_SEM);
                         break;
                     case ANIMATION_ON_OFF:
                         sem_signal(ANIMATION_ON_OFF_SEM);
+                        sem_signal(RED_LED_SEM);
                         break;
+                    case ANIMATION_CYCLE:
+                        sem_signal(ANIMATION_CYCLE_SEM);
                     default:
                         break;
                 }
                 new_msg = 0;
             }
-            /*
-            if (new_msg && received_val == SYNC) {
-                sem_signal(SYNC_SEM);
-                new_msg = 0;
-            } else if (new_msg && received_val == RESET) {
-                sem_signal(RESET_SEM);
-                new_msg = 0;
-            }
-            */
             break;
         default:
             break;

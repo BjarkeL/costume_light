@@ -14,15 +14,11 @@ int AnimationPlayer::run_task(char _state) {
     switch (_state) {
         case PLAYER_INIT:
             init_player();
+            animation_off();
             state = PLAYER_OFF;
             break;
         case PLAYER_READY:
-            if (sem_check(RESET_SEM)) {
-                reset_animation(2);
-                reset_timer(FRAME_TIMER);
-                DDRB ^= 1<<4;
-            }
-            if (sem_check(SYNC_SEM)) {
+            if (sem_check(ANIMATION_CYCLE_SEM)) {
                 if (current_animation == ANIMATION1) {
                     pick_animation(ANIMATION2);
                     current_animation = ANIMATION2;
@@ -30,11 +26,16 @@ int AnimationPlayer::run_task(char _state) {
                     pick_animation(ANIMATION1);
                     current_animation = ANIMATION1;
                 }
-                DDRB ^= 1<<4;
+            }
+            //if (sem_check(RESET_SEM)) {
+            //}
+            if (sem_check(SYNC_SEM)) {
+                reset_animation(2);
+                reset_timer(FRAME_TIMER);
             }
             if (check_timer(FRAME_TIMER) == TIMER_DONE) {
                 play_frame();
-                set_timer(0, 50);
+                set_timer(FRAME_TIMER, FRAME_DELAY);
             }
             if (sem_check(ANIMATION_PAUSE_SEM)) {
                 state = PLAYER_PAUSE;
