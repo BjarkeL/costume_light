@@ -33,7 +33,7 @@ int AnimationPlayer::run_task(char _state) {
             //}
             if (check_timer(FRAME_TIMER) == TIMER_DONE) {
                 if (++sync_counter == frames*SYNC_INTERVAL) {
-                    reset_animation(5);
+                    reset_animation(0);
                     reset_timer(FRAME_TIMER);
                     sem_signal(SEND_ANIMATION_SYNC_SEM);
                     sem_signal(GREEN_LED_SEM);

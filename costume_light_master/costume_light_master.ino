@@ -5,6 +5,7 @@
 #include "src/leds.h"
 #include "src/receiver.h"
 #include "src/sender.h"
+//#include "src/seven_seg.h"
 
 
 char current_task = 0;
@@ -20,6 +21,7 @@ void setup() {
   add_task(new AnimationPlayer, ANIMATION_TASK);
   add_task(new StatusLed, STATUS_LED_TASK);
   add_task(new TestLed, TEST_LED_TASK);
+  //add_task(new SevenSeg, SEVEN_SEG_TASK);
   //add_task(new Receiver, RECEIVER_TASK);
   add_task(new Sender, SENDER_TASK);
   add_task(new HwInput, BUTTON_TASK);
