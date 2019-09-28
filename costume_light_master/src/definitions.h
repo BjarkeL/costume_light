@@ -80,11 +80,11 @@ static unsigned long timing = 0;
 #define MAX_BRIGHTNESS_BLUE 20
 
 /* Different animations */
-#define ANIMATION0 // An animation that is generated.
+#define ANIMATION0 0 // An animation that is generated.
 #define FRAMES_ANIMATION0 0 // Generated animations don't use frames.
-#define ANIMATION1 0
+#define ANIMATION1 1
 #define FRAMES_ANIMATION1 4
-#define ANIMATION2 1
+#define ANIMATION2 2
 #define FRAMES_ANIMATION2 7
 
 /* The animations */
