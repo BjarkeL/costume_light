@@ -69,7 +69,7 @@ static unsigned long timing = 0;
 #define SLAVE_9_ADDRESS 10
 
 /* Defines for the LED strip / animation */
-#define NUM_LEDS 75
+#define NUM_LEDS 149
 #define LED_STRIP_PIN 8
 #define FRAME_DELAY 10
 #define SYNC_INTERVAL 2
