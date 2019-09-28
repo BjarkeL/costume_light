@@ -5,6 +5,7 @@
 #include "FastLED.h"
 #include "definitions.h"
 #include "avr/io.h"
+#include "Arduino.h"
 
 #define PLAYER_INIT 0
 #define PLAYER_READY 1
@@ -22,6 +23,9 @@ public:
     void reset_animation(char _frame);
     void pick_animation(char _animation);
     void animation_off();
+
+    void init_gen_animation();
+    void generated_animation();
 private:
     CRGB leds[NUM_LEDS];
     int frame_index = 0;

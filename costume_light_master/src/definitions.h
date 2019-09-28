@@ -71,11 +71,17 @@ static unsigned long timing = 0;
 /* Defines for the LED strip / animation */
 #define NUM_LEDS 75
 #define LED_STRIP_PIN 8
-#define FRAME_DELAY 50
+#define FRAME_DELAY 10
 #define SYNC_INTERVAL 2
 
+/* Defines for the brightness of the LED's for the Warped Gorajan Trailblazer */
+#define MAX_BRIGHTNESS_RED 120
+#define MAX_BRIGHTNESS_GREEN 20
+#define MAX_BRIGHTNESS_BLUE 20
 
 /* Different animations */
+#define ANIMATION0 // An animation that is generated.
+#define FRAMES_ANIMATION0 0 // Generated animations don't use frames.
 #define ANIMATION1 0
 #define FRAMES_ANIMATION1 4
 #define ANIMATION2 1
