@@ -1,3 +1,8 @@
+# Realtime system for running LED strips with Arduino.
+Uses a "run to complete" scheduler for multitasking.
+The main loop runs every 10 ms.
+The master arduino communicates to all slaves via I2C using the [Wire](https://www.arduino.cc/en/reference/wire) library (broadcast on address 0 enabled).
+The LED strips are controlled using the [FastLED](https://github.com/FastLED/FastLED) library.
 
 
 https://user-images.githubusercontent.com/23262467/138180671-d6581b13-e7ac-4b63-8e45-86f106f5b0b5.mp4
@@ -6,13 +11,6 @@ https://user-images.githubusercontent.com/23262467/138180671-d6581b13-e7ac-4b63-
 
 https://user-images.githubusercontent.com/23262467/138180675-875939ea-5630-4d03-9300-8c37022759f9.mp4
 
-
-
-# Realtime system for running LED strips with Arduino.
-Uses a "run to complete" scheduler for multitasking.
-The main loop runs every 10 ms.
-The master arduino communicates to all slaves via I2C using the [Wire](https://www.arduino.cc/en/reference/wire) library (broadcast on address 0 enabled).
-The LED strips are controlled using the [FastLED](https://github.com/FastLED/FastLED) library.
 
 ## Values to adjust across all devices:
 *definitions.h:*
