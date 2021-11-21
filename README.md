@@ -5,6 +5,7 @@ The master arduino communicates to all slaves via I2C using the [Wire](https://w
 The LED strips are controlled using the [FastLED](https://github.com/FastLED/FastLED) library.
 
 ---
+
 *This project was made as part of a cosplay of the warped gorajan trailblazer outfit from RuneScape. It was done in collaboration with a friend where he created the costume while I handled programming.*
 
 
